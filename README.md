@@ -26,4 +26,10 @@ Link:Protótipos de tela: https://www.figma.com/file/gJvohZcKvEDxqVGz2OvPQx/WSJC
 ![Web 5](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-5.jpg)
 ![Web 6](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-6.jpg)
 ![Web 7](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-7.jpg)
-![Web 8](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-8.jpg)
+
+
+# Autor
+
+William Sarti José
+
+https://www.linkedin.com/in/william-analistadesistema/
