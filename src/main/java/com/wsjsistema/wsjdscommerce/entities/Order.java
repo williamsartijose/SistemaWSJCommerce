@@ -2,6 +2,7 @@ package com.wsjsistema.wsjdscommerce.entities;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -94,5 +95,16 @@ public class Order {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
+
+	public Set<OrdemItem> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<OrdemItem> items) {
+		this.items = items;
+	}
 	
+	public List<Product> getProducts() {
+		return items.stream().map(x -> x.getProduct()).toList();
+	}
 }
