@@ -16,6 +16,57 @@ Clientes podem atualizar seu cadastro no sistema, registrar pedidos e visualizar
 Usuários administradores tem acesso à área administrativa onde pode acessar os cadastros de usuários, produtos e categorias.
 Link:Protótipos de tela: https://www.figma.com/file/gJvohZcKvEDxqVGz2OvPQx/WSJCommerce?t=YYh32zg17TZRlVrq-6
 
+# Tecnologias utilizadas
+## Back end
+- Java
+- Spring Boot
+- JPA / Hibernate
+- Maven
+## Front end
+- HTML / CSS / JS / TypeScript
+- ReactJS
+- React Native
+- Apex Charts
+- Expo
+## Implantação em produção
+- Back end: Heroku
+- Front end web: Netlify
+- Banco de dados: Postgresql
+
+# Como executar o projeto
+
+## Back end
+Pré-requisitos: Java 11
+
+```bash
+# clonar repositório
+git clone https://github.com/williamsartijose/SistemaWSJCommerce
+
+# entrar na pasta do projeto back end
+cd backend
+
+# executar o projeto
+./mvnw spring-boot:run
+```
+
+## Front end web
+Pré-requisitos: npm / yarn
+
+```bash
+# clonar repositório
+git clone https://github.com/williamsartijose/SistemaWSJCommerce
+
+# entrar na pasta do projeto front end web
+cd front-web
+
+# instalar dependências
+yarn install
+
+# executar o projeto
+yarn start
+```
+
+
 
 ### Modelo conceitual 
 ![Web 0](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-0.jpg)
