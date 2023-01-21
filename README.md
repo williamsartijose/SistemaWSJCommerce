@@ -69,15 +69,102 @@ yarn start
 
 
 ### Modelo conceitual 
-![Web 0](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-0.jpg)
-![Web 1](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-1.jpg)
-![Web 2](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-2.jpg)
-![Web 3](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-3.jpg)
-![Web 4](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-4.jpg)
-![Web 5](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-5.jpg)
-![Web 6](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-6.jpg)
-![Web 7](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Nova%20pasta/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-7.jpg)
+![Web 0](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Imagem/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-0.jpg)
+![Web 1](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Imagem/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-1.jpg)
+![Web 2](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Imagem/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-2.jpg)
+![Web 3](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Imagem/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-3.jpg)
+![Web 4](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Imagem/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-4.jpg)
+![Web 5](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Imagem/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-5.jpg)
+![Web 6](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Imagem/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-6.jpg)
+![Web 7](https://github.com/williamsartijose/SistemaWSJCommerce/blob/main/Imagem/imgDoc/49daadd836f3ce8f307b4ceaa4240e28-7.jpg)
 
+
+
+## Banco de dados H2, entidade User
+
+
+```bash
+# application.properties
+spring.profiles.active=test
+spring.jpa.open-in-view=false
+
+# application-test.properties
+- Dados de conexão com o banco H2
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.username=sa
+spring.datasource.password=
+- H2 Client
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+- JPA, SQL
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.defer-datasource-initialization=true
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+
+# Recomendação para campo tipo Instant
+
+@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+private Instant moment;   
+
+Caso precise aprender sobre data-hora em Java (LocalDate, LocalDateTime
+e Instant):
+https://www.youtube.com/watch?v=WnJUI-jMQGE
+
+#Relacionamento muitos-para-um - @ManyToOne
+
+public class Order {
+...
+@ManyToOne
+@JoinColumn(name = "client_id")
+private User client;
+
+
+public class User {
+...
+@OneToMany(mappedBy = "client")
+private List<Order> orders = new ArrayList<>();
+
+# Relacionamento um-para-um - @OneToOne
+
+
+public class Payment {
+...
+@OneToOne
+@MapsId
+private Order order;
+
+
+
+public class Order {
+...
+@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+private Payment payment;
+
+
+
+# Relacionamento muitos-para-muitos -@ManyToMany
+
+
+public class Product {
+...
+@ManyToMany
+@JoinTable(name = "tb_product_category",
+joinColumns = @JoinColumn(name = "product_id"),
+inverseJoinColumns = @JoinColumn(name = "category_id"))
+private Set<Category> categories = new HashSet<>();
+
+
+public class Category {
+...
+@ManyToMany(mappedBy = "categories")
+private Set<Product> products = new HashSet<>();
+
+
+
+```
 
 # Autor
 
