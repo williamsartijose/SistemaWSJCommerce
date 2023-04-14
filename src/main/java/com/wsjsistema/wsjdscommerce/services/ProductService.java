@@ -21,7 +21,7 @@ public class ProductService {
 
     //Buscando Por ID
     @Transactional(readOnly = true)
-    public ProductDTO findByIDto(Long id ){
+    public ProductDTO findById(Long id ){
         Optional<Product> result = repository.findById(id);
         Product product = result.get();
         ProductDTO dto = new ProductDTO(product);
