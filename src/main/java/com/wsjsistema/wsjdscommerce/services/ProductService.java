@@ -26,7 +26,6 @@ public class ProductService {
         Product product = result.get();
         ProductDTO dto = new ProductDTO(product);
         return  dto;
-
     }
 //Buscando todos sem ser paginados
 //    @Transactional(readOnly = true)
@@ -56,6 +55,10 @@ public Page<ProductDTO> findAll(Pageable pageable) {
         return  new ProductDTO(entity);
     }
 
+    @Transactional
+    public void delete(Long id ){
+       repository.deleteById(id);
+    }
     private void copyDtoToEntity(ProductDTO dto, Product entity) {
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
