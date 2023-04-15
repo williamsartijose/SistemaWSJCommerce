@@ -3,14 +3,12 @@ package com.wsjsistema.wsjdscommerce.services;
 import com.wsjsistema.wsjdscommerce.dto.ProductDTO;
 import com.wsjsistema.wsjdscommerce.entities.Product;
 import com.wsjsistema.wsjdscommerce.repositories.ProductRepository;
+import com.wsjsistema.wsjdscommerce.services.execptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -22,10 +20,8 @@ public class ProductService {
     //Buscando Por ID
     @Transactional(readOnly = true)
     public ProductDTO findById(Long id ){
-        Optional<Product> result = repository.findById(id);
-        Product product = result.get();
-        ProductDTO dto = new ProductDTO(product);
-        return  dto;
+        Product product = repository.findById(id).orElseThrow( () -> new ResourceNotFoundException("Recurso não encontrado"));
+        return  new ProductDTO(product);
     }
 //Buscando todos sem ser paginados
 //    @Transactional(readOnly = true)
